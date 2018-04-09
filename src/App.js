@@ -31,6 +31,15 @@ class App extends Component {
             authenticated: false
         };
 
+		this.state.socket.on('message', function (msg) {
+            //when a message is sent to the server, it will send it to all clients and add to their messages array (name and message)
+            this.setState({ messages: this.state.messages.concat([msg]) }); //update message state var
+			console.log(window.location.pathname);
+            if (window.location.pathname !== "/chat") {
+                this.notify(msg);
+            }
+        }.bind(this));
+		
         this.setName = this.setName.bind(this);
         this.authCheck = this.authCheck.bind(this);
 		this.chatController = this.chatController.bind(this);
@@ -48,15 +57,6 @@ class App extends Component {
             console.log('Sending message:', this.state.text);
             this.state.socket.emit('message', this.state.text);
             this.setState({ text: "" });
-        }.bind(this));
-
-        this.state.socket.on('message', function (msg) {
-            //when a message is sent to the server, it will send it to all clients and add to their messages array (name and message)
-            this.setState({ messages: this.state.messages.concat([msg]) }); //update message state var
-			console.log(window.location.pathname);
-            if (window.location.pathname !== "/chat") {
-                this.notify(msg);
-            }
         }.bind(this));
 
         this.state.socket.on('roster', function (names) { //see who's logged in
