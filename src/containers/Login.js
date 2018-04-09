@@ -33,6 +33,7 @@ class Login extends Component {
 				console.log(response.data);
                                    this.setState({authenticated: true})
                 this.props.loginProp(this.state.authenticated);
+				this.props.userInfo(response.data);
 				this.props.chatController();
                 } else if (response.status === 204) {
                     
