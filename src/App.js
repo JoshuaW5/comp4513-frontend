@@ -26,7 +26,7 @@ class App extends Component {
             name: '', //update with users name on login
 			id: '', //set with user's id on login
             text: '',
-            socket: io.connect('https://morning-everglades-75821.herokuapp.com/'),
+            socket: '', //connect on login in chatController
             chat: false,
             authenticated: false
         };
@@ -41,6 +41,7 @@ class App extends Component {
 	
 	chatController() {
 	console.log("chatcontroller");
+		this.setState({socket: io.connect('https://morning-everglades-75821.herokuapp.com/')});
 	        this.state.socket.on('connect', function () { //need to implement a way to only connect after logging in.. perhaps do not display this code unless logged in?
             //this.setName();
 			console.log("connect test");
