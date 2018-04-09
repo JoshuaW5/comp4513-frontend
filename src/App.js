@@ -85,7 +85,7 @@ class App extends Component {
     render() {
 
         document.documentElement.className = 'has-navbar-fixed-top'; //Add padding for fixed navbar
-		if (this.state.authenticated) { this.chatController(); console.log(this.state.authenticated); } 
+		
         return (
             <div>
             
@@ -98,7 +98,7 @@ class App extends Component {
  <main >
  <Route path="/" exact component={Login} />
  <Route path="/home" exact component={Home} />
- <Route path="/login" exact render={() => <Login loginProp={this.authCheck} userInfo={this.userInfo} />} />
+ <Route path="/login" exact render={() => <Login loginProp={this.authCheck} chatController={this.chatController} userInfo={this.userInfo} />} />
  <Route path="/visual" exact component={StockVisual} />
  <Route path="/users" exact component={UserBrowser} />
  <Route path="/user/:id" exact component={SingleUser} />
