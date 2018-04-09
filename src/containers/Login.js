@@ -32,6 +32,7 @@ class Login extends Component {
                 if(response.status === 200) {
                                    this.setState({authenticated: true})
                 this.props.loginProp(this.state.authenticated);
+				return <Redirect to='/home'/>;
                 } else if (response.status === 204) {
                     
                       

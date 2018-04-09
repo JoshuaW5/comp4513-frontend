@@ -37,6 +37,7 @@ class App extends Component {
     }
 	
 	chatController() {
+	console.log("chatcontroller");
 	        this.state.socket.on('connect', function () { //need to implement a way to only connect after logging in.. perhaps do not display this code unless logged in?
             //this.setName();
             var username = "testUsername"; //this will be this.state.name
