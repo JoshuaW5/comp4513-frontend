@@ -87,7 +87,7 @@ class App extends Component {
  </Link>
            
  <main >
- <Route path="/" exact component={Home} />
+ <Route path="/" exact component={login} />
  <Route path="/home" exact component={Home} />
  <Route path="/login" exact render={() => <Login loginProp={this.authCheck} />} />
  <Route path="/visual" exact component={StockVisual} />
