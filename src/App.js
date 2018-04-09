@@ -24,6 +24,7 @@ class App extends Component {
             messages: [],
             roster: [],
             name: '', //update with users name on login
+			id: '', //set with user's id on login
             text: '',
             socket: io.connect('https://morning-everglades-75821.herokuapp.com/'),
             chat: false,
@@ -81,7 +82,8 @@ class App extends Component {
     }
 	
 	userInfo(info) {
-		this.setState({name: info.firstname})
+		this.setState({name: info.first_name + " " + info.last_name,
+					   id: info.id})
 	}
     
     render() {
@@ -109,7 +111,7 @@ class App extends Component {
  <Route path="/about" exact component={AboutUs} />
   
  <Route path="/chat" exact render={(props) => (
-  <ChatViewer {...props} messages={this.state.messages} /**name={this.state.name}**/ socket={this.state.socket}/>
+  <ChatViewer {...props} messages={this.state.messages} name={this.state.name} socket={this.state.socket}/>
 )}/>
  </main>
  </div>
