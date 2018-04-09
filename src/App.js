@@ -84,7 +84,7 @@ class App extends Component {
     render() {
 
         document.documentElement.className = 'has-navbar-fixed-top'; //Add padding for fixed navbar
-		if (this.state.authenticated) { this.chatController() } 
+		if (this.state.authenticated) { this.chatController(); console.log(this.state.authenticated); } 
         return (
             <div>
             
