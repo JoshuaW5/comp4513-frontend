@@ -45,7 +45,7 @@ class App extends Component {
 	        this.state.socket.on('connect', function () { //need to implement a way to only connect after logging in.. perhaps do not display this code unless logged in?
             //this.setName();
 			console.log("connect test");
-            var username = "testUsername"; //this will be this.state.name
+            var username = this.state.name; //this will be this.state.name
             this.setState({ text: username + " has logged in" }); //Send logged in message to server after logging in.
             console.log('Sending message:', this.state.text);
             this.state.socket.emit('message', this.state.text);
