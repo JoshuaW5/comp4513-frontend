@@ -1,0 +1,44 @@
+// 1. Import the initial variables
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+@import "../node_modules/bulma/sass/utilities/functions";
+
+// 2. Set your own initial variables
+
+//color variables
+$blue: #126180;
+$blue-invert: #fff;
+$purple: #c71585;
+$link-hover: #c71585;
+$white: #FFFFFF;
+
+//non-color variables
+$family-serif: "Meriweather", "Georgia", serif;
+$family-title: "impact";
+
+// 3. Set the derived variables
+
+$primary: $blue;
+$primary-invert: $blue-invert;
+$family-primary: $family-serif;
+
+
+$tabs-link-hover-border-bottom-color: $purple;
+$tabs-link-hover-color: $purple;
+
+$button-background-color: $blue;
+$button-color: $white;
+$button-hover-color: $purple;
+$button-hover-border-color: $purple;
+    
+.title
+{
+    font-family: $family-title;
+}
+
+
+// 4. Add new color variables to the color map.
+@import "../node_modules/bulma/sass/utilities/derived-variables";
+
+
+// 5. Import the rest of Bulma
+@import "../node_modules/bulma/bulma";
