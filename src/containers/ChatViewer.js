@@ -23,7 +23,7 @@ class ChatViewer extends Component {
 
   send() { //call this function to send() a message (when submitting a HTML form?)
     console.log('Sending message:', this.state.text);
-    this.props.socket.emit('message', this.props.name+ "> " + this.state.text);
+    this.props.socket.emit('message', this.props.name+ " > " + this.state.text);
     this.setState({ text: "" });
   }
 

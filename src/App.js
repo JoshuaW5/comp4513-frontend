@@ -53,6 +53,7 @@ class App extends Component {
         this.state.socket.on('message', function (msg) {
             //when a message is sent to the server, it will send it to all clients and add to their messages array (name and message)
             this.setState({ messages: this.state.messages.concat([msg]) }); //update message state var
+			console.log(window.location.pathname);
             if (window.location.pathname !== "/chat") {
                 this.notify(msg);
             }
