@@ -33,6 +33,8 @@ class App extends Component {
         this.setName = this.setName.bind(this);
         this.authCheck = this.authCheck.bind(this);
 		this.chatController = this.chatController.bind(this);
+		this.userInfo = this.userInfo.bind(this);
+		this.notify = this.notify.bind(this);
 
     }
 	

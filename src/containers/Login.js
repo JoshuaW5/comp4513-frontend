@@ -30,6 +30,7 @@ class Login extends Component {
            axios.post('https://pacific-earth-77905.herokuapp.com/api/users/' + this.state.email + "/" + this.state.pass )
             .then((response) => {
                 if(response.status === 200) {
+				console.log(response.data);
                                    this.setState({authenticated: true})
                 this.props.loginProp(this.state.authenticated);
 				this.props.chatController();
