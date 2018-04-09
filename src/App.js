@@ -32,8 +32,12 @@ class App extends Component {
 
         this.setName = this.setName.bind(this);
         this.authCheck = this.authCheck.bind(this);
+		this.chatController = this.chatController.bind(this);
 
-        this.state.socket.on('connect', function () { //need to implement a way to only connect after logging in.. perhaps do not display this code unless logged in?
+    }
+	
+	chatController() {
+	        this.state.socket.on('connect', function () { //need to implement a way to only connect after logging in.. perhaps do not display this code unless logged in?
             //this.setName();
             var username = "testUsername"; //this will be this.state.name
             this.setState({ text: username + " has logged in" }); //Send logged in message to server after logging in.
@@ -53,8 +57,7 @@ class App extends Component {
         this.state.socket.on('roster', function (names) { //see who's logged in
             this.setState({ roster: this.state.roster.concat([names]) });
         }.bind(this));
-
-    }
+	}
 
     setName() { //call this to set the name on login
         this.state.socket.emit('identify', this.state.name);
@@ -73,10 +76,15 @@ class App extends Component {
     authCheck(nextState) {
         this.setState({authenticated: nextState});
     }
+	
+	userInfo(info) {
+		this.setState({name: info.firstname})
+	}
     
     render() {
 
         document.documentElement.className = 'has-navbar-fixed-top'; //Add padding for fixed navbar
+		if (this.state.authenticated) { this.chatController } 
         return (
             <div>
             
@@ -89,7 +97,7 @@ class App extends Component {
  <main >
  <Route path="/" exact component={Login} />
  <Route path="/home" exact component={Home} />
- <Route path="/login" exact render={() => <Login loginProp={this.authCheck} />} />
+ <Route path="/login" exact render={() => <Login loginProp={this.authCheck} userInfo={this.userInfo} />} />
  <Route path="/visual" exact component={StockVisual} />
  <Route path="/users" exact component={UserBrowser} />
  <Route path="/user/:id" exact component={SingleUser} />
