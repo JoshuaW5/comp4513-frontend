@@ -15,9 +15,7 @@ class Login extends Component {
                  };
     this.login = this.login.bind(this);
     this.handleEmail = this.handleEmail.bind(this)
-    this.handlePass = this.handlePass.bind(this);
-      
-                                             
+    this.handlePass = this.handlePass.bind(this);                                           
     }
     
     handleEmail(e) {
