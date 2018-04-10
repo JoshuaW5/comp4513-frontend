@@ -9,7 +9,7 @@ class UserSummary extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            user: props.userData,
+            user: props.user,
             portfolioDetails: [],
             totalStocks: 0,
             totalValue: 0,
