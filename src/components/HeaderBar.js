@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import HeaderMenu from './HeaderMenu.js';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 class HeaderBar extends Component {
 
