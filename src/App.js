@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HeaderApp from './components/HeaderApp.js';
 import { Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Home from './containers/Home.js';
 import UserBrowser from './containers/UserBrowser.js';
 import SingleUser from './containers/SingleUser.js';
