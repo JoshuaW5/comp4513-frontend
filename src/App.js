@@ -100,7 +100,7 @@ class App extends Component {
         return (
             <div>
             
- <HeaderApp />
+ <HeaderApp name={this.state.name}/>
            <Link
  to={"/chat"}>
  <ToastContainer />

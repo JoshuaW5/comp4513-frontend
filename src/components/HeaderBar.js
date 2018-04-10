@@ -35,7 +35,7 @@ class HeaderBar extends Component {
  </span></Link>
  <Link
  to={"/home"} className="navbar-item">
- <h1 className="title"> username </h1></Link>
+ <h1 className="title"> {this.props.name} </h1></Link>
   
 <Link  to={"/chat"} className="navbar-item">Chat</Link>
   <Link  to={"/login"} className="navbar-item">Logout</Link>

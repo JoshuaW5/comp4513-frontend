@@ -3,7 +3,7 @@ import HeaderBar from './HeaderBar.js';
 const HeaderApp = function (props) {
     return (
  <header>
- <HeaderBar/>
+ <HeaderBar name={props.name}/>
  </header>
 
     );
