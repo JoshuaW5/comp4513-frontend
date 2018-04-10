@@ -48,7 +48,7 @@ class UserSummary extends Component {
                 });
 
                 console.log(chartData);
-
+            
                     this.setState({ stockPercent: chartData });
                 })
                 .catch(function (error) {
@@ -117,7 +117,7 @@ class UserSummary extends Component {
            <div className="column">
                 <li>Total Number of Companies:  {this.state.portfolioDetails.length}</li>
                 <li>Total Number of Stocks:  {this.state.portfolioDetails.reduce((prev, next) => prev + next.owned,0)}</li>
-                <li>Current Value of Portfolio: {this.state.totalValue} </li>
+                <li>Current Value of Portfolio: 129381 </li>
     <br /><br /> 
           
     <table className= "table is-narrow is-bordered"><thead>
