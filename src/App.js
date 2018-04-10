@@ -37,7 +37,6 @@ class App extends Component {
 		this.chatController = this.chatController.bind(this);
 		this.userInfo = this.userInfo.bind(this);
 		this.notify = this.notify.bind(this);
-		this.requireAuth = this.requireAuth.bind(this);
 
     }
 	
