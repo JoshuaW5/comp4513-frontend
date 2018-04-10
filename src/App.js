@@ -109,9 +109,10 @@ class App extends Component {
         <Home /> ) : ( <Redirect to={{ pathname: "/login", }} /> ) />
   
  <Route path="/" exact render={props => this.state.authenticated ? (
-        <Home /> ) : ( <Redirect to={{ pathname: "/login", }} /> )   />
+        <Home /> ) : ( <Redirect to={{ pathname: "/login", }} /> ) />
 
  <Route path="/login" exact render={() => <Login loginProp={this.authCheck} chatController={this.chatController} userInfo={this.userInfo} />} />
+ 
  <Route path="/visual" exact render={props => this.state.authenticated ? (
         <StockVisual /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  />
  <Route path="/users" exact render={props => this.state.authenticated ? (
@@ -127,7 +128,6 @@ class App extends Component {
   
  <Route path="/chat" exact render={props => this.state.authenticated ? (
   <ChatViewer {...props} messages={this.state.messages} name={this.state.name} socket={this.state.socket}/> ) : ( <Redirect to={{ pathname: "/login", }} /> )  />
-)}/>
  </main>
  </div>
         );
