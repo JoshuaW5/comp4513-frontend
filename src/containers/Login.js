@@ -35,6 +35,7 @@ class Login extends Component {
                 this.props.loginProp(this.state.authenticated);
 				this.props.userInfo(response.data);
 				this.props.chatController();
+				return <Redirect to='/home' />;
                 } else if (response.status === 204) {
                     
                       
@@ -47,7 +48,7 @@ class Login extends Component {
             }
 
   render() {
-      //if (this.state.authenticated) {return <Redirect to='/'/>;}
+     
     return (
       <div>
                         <section className="hero is-light">
