@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HeaderApp from './components/HeaderApp.js';
 import { Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Home from './containers/Home.js';
 import UserBrowser from './containers/UserBrowser.js';
 import SingleUser from './containers/SingleUser.js';
@@ -36,6 +37,7 @@ class App extends Component {
 		this.chatController = this.chatController.bind(this);
 		this.userInfo = this.userInfo.bind(this);
 		this.notify = this.notify.bind(this);
+		this.requireAuth = this.requireAuth.bind(this);
 
     }
 	
@@ -80,6 +82,12 @@ class App extends Component {
         });
     }
 
+	requireAuth(nextState, replace) {
+		if (!this.state.authenticated) {
+		replace('/login');
+  }
+}
+	
     authCheck(nextState) {
         this.setState({authenticated: nextState});
     }
@@ -103,14 +111,15 @@ class App extends Component {
  </Link>
            
  <main >
- <Route path="/" exact component={Login} />
- <Route path="/home" exact component={Home} />
+ <Route path="/" exact component={Login} onEnter={this.requireAuth()} />
+ <Route path="/home" exact component={Home} onEnter={this.requireAuth()} />
  <Route path="/login" exact render={() => <Login loginProp={this.authCheck} chatController={this.chatController} userInfo={this.userInfo} />} />
- <Route path="/visual" exact component={StockVisual} />
- <Route path="/user/:id" exact component={SingleUser} />
- <Route path="/stock/:id" exact component={SingleStock} />
- <Route path="/stocks" exact component={StockBrowser} />
- <Route path="/about" exact component={AboutUs} />
+ <Route path="/visual" exact component={StockVisual} onEnter={this.requireAuth()} />
+ <Route path="/users" exact component={UserBrowser} onEnter={this.requireAuth()} />
+ <Route path="/user/:id" exact component={SingleUser} onEnter={this.requireAuth()} />
+ <Route path="/stock/:id" exact component={SingleStock} onEnter={this.requireAuth()} />
+ <Route path="/stocks" exact component={StockBrowser} onEnter={this.requireAuth()} />
+ <Route path="/about" exact component={AboutUs} onEnter={this.requireAuth()} />
   
  <Route path="/chat" exact render={(props) => (
   <ChatViewer {...props} messages={this.state.messages} name={this.state.name} socket={this.state.socket}/>
