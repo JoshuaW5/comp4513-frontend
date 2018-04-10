@@ -105,32 +105,28 @@ class App extends Component {
            
  <main >
  
-  <Route path="/home" exact
-    render={props =>
-      this.state.authenticated ? (
-        <Home />
-      ) : (
-        <Redirect
-          to={{
-            pathname: "/login",
-          }}
-        />
-      )
-    }
-  />
+  <Route path="/home" exact render={props => this.state.authenticated ? (
+        <Home /> ) : ( <Redirect to={{ pathname: "/login", }} /> ) />
   
- <Route path="/" exact component={Login}  />
- //<Route path="/home" exact component={Home} />
+ <Route path="/" exact render={props => this.state.authenticated ? (
+        <Home /> ) : ( <Redirect to={{ pathname: "/login", }} /> )   />
+
  <Route path="/login" exact render={() => <Login loginProp={this.authCheck} chatController={this.chatController} userInfo={this.userInfo} />} />
- <Route path="/visual" exact component={StockVisual} />
- <Route path="/users" exact component={UserBrowser} />
- <Route path="/user/:id" exact component={SingleUser} />
- <Route path="/stock/:id" exact component={SingleStock} />
- <Route path="/stocks" exact component={StockBrowser} />
- <Route path="/about" exact component={AboutUs} />
+ <Route path="/visual" exact render={props => this.state.authenticated ? (
+        <StockVisual /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  />
+ <Route path="/users" exact render={props => this.state.authenticated ? (
+        <UserBrowser/> ) : ( <Redirect to={{ pathname: "/login", }} /> )  />
+ <Route path="/user/:id" exact render={props => this.state.authenticated ? (
+        <SingleUser /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  />
+ <Route path="/stock/:id" exact render={props => this.state.authenticated ? (
+        <SingleStock /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  />
+ <Route path="/stocks" exact render={props => this.state.authenticated ? (
+        <StockBrowser /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  />
+ <Route path="/about" exact render={props => this.state.authenticated ? (
+        <AboutUs /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  />
   
- <Route path="/chat" exact render={(props) => (
-  <ChatViewer {...props} messages={this.state.messages} name={this.state.name} socket={this.state.socket}/>
+ <Route path="/chat" exact render={props => this.state.authenticated ? (
+  <ChatViewer {...props} messages={this.state.messages} name={this.state.name} socket={this.state.socket}/> ) : ( <Redirect to={{ pathname: "/login", }} /> )  />
 )}/>
  </main>
  </div>
