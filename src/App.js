@@ -76,7 +76,7 @@ class App extends Component {
     notify(message) {
         toast(message.text, {
             // glamor rule
-            progressClass, Name: css({
+            progressClassName: css({
                 background: "#00d1b2"
             })
         });
