@@ -37,12 +37,13 @@ class App extends Component {
 		this.chatController = this.chatController.bind(this);
 		this.userInfo = this.userInfo.bind(this);
 		this.notify = this.notify.bind(this);
-		this.requireAuth = this.requireAuth.bind(this);
 
     }
 	
 	chatController() {
 	console.log("chatcontroller");
+	if (this.state.socket === '') {
+	this.setState({authenticated: true});
 		this.setState({socket: io.connect('https://morning-everglades-75821.herokuapp.com/')});
 	        this.state.socket.on('connect', function () { //need to implement a way to only connect after logging in.. perhaps do not display this code unless logged in?
             //this.setName();
@@ -66,6 +67,7 @@ class App extends Component {
         this.state.socket.on('roster', function (names) { //see who's logged in
             this.setState({ roster: this.state.roster.concat([names]) });
         }.bind(this));
+		}
 	}
 
     setName() { //call this to set the name on login
@@ -81,12 +83,6 @@ class App extends Component {
             })
         });
     }
-
-	requireAuth(nextState, replace) {
-		if (!this.state.authenticated) {
-		replace('/login');
-  }
-}
 	
     authCheck(nextState) {
         this.setState({authenticated: nextState});
@@ -111,19 +107,30 @@ class App extends Component {
  </Link>
            
  <main >
- <Route path="/" exact component={Login} onEnter={this.requireAuth()} />
- <Route path="/home" exact component={Home} onEnter={this.requireAuth()} />
+ 
+ <Route path="/" exact render={props => this.state.authenticated ? (
+        <Home /> ) : ( <Redirect to={{ pathname: "/login", }} /> )} />
+ <Route path="/home" exact render={props => this.state.authenticated ? (
+        <Home /> ) : ( <Redirect to={{ pathname: "/login", }} /> )} />
+		
+		
  <Route path="/login" exact render={() => <Login loginProp={this.authCheck} chatController={this.chatController} userInfo={this.userInfo} />} />
- <Route path="/visual" exact component={StockVisual} onEnter={this.requireAuth()} />
- <Route path="/users" exact component={UserBrowser} onEnter={this.requireAuth()} />
- <Route path="/user/:id" exact component={SingleUser} onEnter={this.requireAuth()} />
- <Route path="/stock/:id" exact component={SingleStock} onEnter={this.requireAuth()} />
- <Route path="/stocks" exact component={StockBrowser} onEnter={this.requireAuth()} />
- <Route path="/about" exact component={AboutUs} onEnter={this.requireAuth()} />
+ 
+ <Route path="/visual" exact render={props => this.state.authenticated ? (
+        <StockVisual /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
+ <Route path="/users" exact render={props => this.state.authenticated ? (
+        <UserBrowser/> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
+ <Route path="/user/:id" exact render={props => this.state.authenticated ? (
+        <SingleUser {...props} /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
+ <Route path="/stock/:id" exact render={props => this.state.authenticated ? (
+        <SingleStock {...props} /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
+ <Route path="/stocks" exact render={props => this.state.authenticated ? (
+        <StockBrowser /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
+ <Route path="/about" exact render={props => this.state.authenticated ? (
+        <AboutUs /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
   
- <Route path="/chat" exact render={(props) => (
-  <ChatViewer {...props} messages={this.state.messages} name={this.state.name} socket={this.state.socket}/>
-)}/>
+ <Route path="/chat" exact render={props => this.state.authenticated ? (
+  <ChatViewer {...props} messages={this.state.messages} name={this.state.name} socket={this.state.socket}/> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
  </main>
  </div>
         );
