@@ -56,6 +56,9 @@ class SingleUser extends Component {
             //});
         }
 
+        console.log(this.state.userData);
+        console.log(this.props.match.params.id)
+        
         let toDisplay = <UserSummary user={this.state.userData} />
 
         if (this.state.portfolio === true) { toDisplay = <UserPortfolio user={this.state.userData} /> }
