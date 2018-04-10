@@ -42,6 +42,7 @@ class App extends Component {
 	
 	chatController() {
 	console.log("chatcontroller");
+	if (this.state.socket === '') {
 		this.setState({socket: io.connect('https://morning-everglades-75821.herokuapp.com/')});
 	        this.state.socket.on('connect', function () { //need to implement a way to only connect after logging in.. perhaps do not display this code unless logged in?
             //this.setName();
@@ -65,6 +66,7 @@ class App extends Component {
         this.state.socket.on('roster', function (names) { //see who's logged in
             this.setState({ roster: this.state.roster.concat([names]) });
         }.bind(this));
+		}
 	}
 
     setName() { //call this to set the name on login
