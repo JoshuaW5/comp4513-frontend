@@ -110,7 +110,7 @@ class App extends Component {
  <Route path="/" exact render={props => this.state.authenticated ? (
         <Home /> ) : ( <Redirect to={{ pathname: "/login", }} /> )} />
  <Route path="/home" exact render={props => this.state.authenticated ? (
-        <Home /> ) : ( <Redirect to={{ pathname: "/login", }} /> )} />
+        <Home /> ) : ( <Redirect to={{ pathname: "/login", state: { authenticated: this.state.authenticated } }} /> )} />
 		
 		
  <Route path="/login" exact render={() => <Login loginProp={this.authCheck} chatController={this.chatController} userInfo={this.userInfo} />} />
