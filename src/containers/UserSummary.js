@@ -30,7 +30,7 @@ class UserSummary extends Component {
     }
     
     componentDidMount() {
-        axios.get('https://pacific-earth-77905.herokuapp.com/api/portfolio/percentage' + this.props.match.params.id)
+        axios.get('https://pacific-earth-77905.herokuapp.com/api/portfolio/percentage/' + this.props.match.params.id)
             .then(response => {
 
                 var chartData = response.data;
