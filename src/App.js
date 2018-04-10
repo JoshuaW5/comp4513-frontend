@@ -121,9 +121,9 @@ class App extends Component {
  <Route path="/users" exact render={props => this.state.authenticated ? (
         <UserBrowser/> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
  <Route path="/user/:id" exact render={props => this.state.authenticated ? (
-        <SingleUser /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
+        <SingleUser {...props} /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
  <Route path="/stock/:id" exact render={props => this.state.authenticated ? (
-        <SingleStock /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
+        <SingleStock {...props} /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
  <Route path="/stocks" exact render={props => this.state.authenticated ? (
         <StockBrowser /> ) : ( <Redirect to={{ pathname: "/login", }} /> )  }/>
  <Route path="/about" exact render={props => this.state.authenticated ? (
