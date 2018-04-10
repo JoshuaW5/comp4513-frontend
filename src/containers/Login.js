@@ -47,7 +47,7 @@ class Login extends Component {
             }
 
   render() {
-      if (this.state.authenticated) {return <Redirect to='/'/>;}
+      //if (this.state.authenticated) {return <Redirect to='/'/>;}
     return (
       <div>
                         <section className="hero is-light">
