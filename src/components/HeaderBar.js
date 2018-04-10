@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import HeaderMenu from './HeaderMenu.js';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 
 class HeaderBar extends Component {
@@ -16,17 +15,7 @@ class HeaderBar extends Component {
   // to bind "this" correctly for React event handlers
   this.openBurger = this.openBurger.bind(this);
  }
-
-  componentDidMount() {
-        // Here we are using the Axios package to retrieve "dummy" API data
-        axios.get('https://pacific-earth-77905.herokuapp.com/api/getUserIDName/' + this.state.userID)
-            .then(response => {
-                this.setState({ userData: response.data });
-            })
-            .catch(function (error) {
-                alert('Error with api call ... error=' + error);
-            });
-    }    
+  
     
  openBurger() {
   this.state.openBurger ? this.setState({ openBurger: false }) : this.setState({ openBurger: true });
@@ -46,7 +35,7 @@ class HeaderBar extends Component {
  </span></Link>
  <Link
  to={"/home"} className="navbar-item">
- <h1 className="title">{this.state.userData.first_name} + " " +  {this.state.userData.last_name} </h1></Link>
+ <h1 className="title"> username </h1></Link>
   
 <Link  to={"/chat"} className="navbar-item">Chat</Link>
   <Link  to={"/login"} className="navbar-item">Logout</Link>
