@@ -112,15 +112,15 @@ class App extends Component {
  </Link>
            
  <main >
- <Route path="/" exact component={Login} onEnter={this.requireAuth} />
- <Route path="/home" exact component={Home} onEnter={this.requireAuth} />
+ <Route path="/" exact component={Login} onEnter={this.requireAuth()} />
+ <Route path="/home" exact component={Home} onEnter={this.requireAuth()} />
  <Route path="/login" exact render={() => <Login loginProp={this.authCheck} chatController={this.chatController} userInfo={this.userInfo} />} />
- <Route path="/visual" exact component={StockVisual} onEnter={this.requireAuth} />
- <Route path="/users" exact component={UserBrowser} onEnter={this.requireAuth} />
- <Route path="/user/:id" exact component={SingleUser} onEnter={this.requireAuth} />
- <Route path="/stock/:id" exact component={SingleStock} onEnter={this.requireAuth} />
- <Route path="/stocks" exact component={StockBrowser} onEnter={this.requireAuth} />
- <Route path="/about" exact component={AboutUs} onEnter={this.requireAuth} />
+ <Route path="/visual" exact component={StockVisual} onEnter={this.requireAuth()} />
+ <Route path="/users" exact component={UserBrowser} onEnter={this.requireAuth()} />
+ <Route path="/user/:id" exact component={SingleUser} onEnter={this.requireAuth()} />
+ <Route path="/stock/:id" exact component={SingleStock} onEnter={this.requireAuth()} />
+ <Route path="/stocks" exact component={StockBrowser} onEnter={this.requireAuth()} />
+ <Route path="/about" exact component={AboutUs} onEnter={this.requireAuth()} />
   
  <Route path="/chat" exact render={(props) => (
   <ChatViewer {...props} messages={this.state.messages} name={this.state.name} socket={this.state.socket}/>
