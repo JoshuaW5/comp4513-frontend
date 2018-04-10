@@ -6,7 +6,7 @@ class UserPortfolio extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: props.user,
+            user: props.user[0],
             sort: 'symbol',
             portfolioDetails: [],
             stocks: [],
