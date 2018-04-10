@@ -9,7 +9,7 @@ class UserSummary extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            user: props.user,
+            user: props.userData,
             portfolioDetails: [],
             totalStocks: 0,
             totalValue: 0,
@@ -30,7 +30,7 @@ class UserSummary extends Component {
     }
     
     componentDidMount() {
-        axios.get('https://pacific-earth-77905.herokuapp.com/api/portfolio/percentage' + this.props.userData.id)
+        axios.get('https://pacific-earth-77905.herokuapp.com/api/portfolio/percentage' + this.state.user.id)
             .then(response => {
 
                 var chartData = response.data;
