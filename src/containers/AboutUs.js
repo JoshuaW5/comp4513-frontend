@@ -71,6 +71,9 @@ Technologies Used:</h3>
       <li>
     Bulma <a href="https://bulma.io/">https://bulma.io//</a>
     </li>
+	<li>
+	Toastify Notifications <a href="https://www.npmjs.com/package/react-toastify">https://www.npmjs.com/package/react-toastify</a>
+	</li>
     </ul>
   </div>
  
