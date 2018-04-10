@@ -83,9 +83,7 @@ class App extends Component {
 
 	requireAuth(nextState, replace) {
 		if (!this.state.authenticated) {
-		replace({
-      pathname: '/login'
-    })
+		replace('/login');
   }
 }
 	
