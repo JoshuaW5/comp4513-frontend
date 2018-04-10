@@ -76,7 +76,7 @@ class App extends Component {
     notify(message) {
         toast(message.text, {
             // glamor rule
-            progressClassName: css({
+            progressClass, Name: css({
                 background: "#00d1b2"
             })
         });
@@ -111,8 +111,24 @@ class App extends Component {
  </Link>
            
  <main >
+ 
+   <Route
+    path="/home" exact 
+    render={props =>
+      this.state.authenticated ? (
+        <Home/>
+      ) : (
+        <Redirect
+          to={{
+            pathname: "/login",
+          }}
+        />
+      )
+    }
+  />
+ 
  <Route path="/" exact component={Login} onEnter={this.requireAuth()} />
- <Route path="/home" exact component={Home} onEnter={this.requireAuth()} />
+ //<Route path="/home" exact component={Home} onEnter={this.requireAuth()} />
  <Route path="/login" exact render={() => <Login loginProp={this.authCheck} chatController={this.chatController} userInfo={this.userInfo} />} />
  <Route path="/visual" exact component={StockVisual} onEnter={this.requireAuth()} />
  <Route path="/users" exact component={UserBrowser} onEnter={this.requireAuth()} />
