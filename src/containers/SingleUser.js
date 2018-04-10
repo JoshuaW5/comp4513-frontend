@@ -72,7 +72,7 @@ class SingleUser extends Component {
         Assignment 2
       </h1>
       <h2 className="subtitle">
-        {this.state.userData.first_name} + " " +  {this.state.userData.last_name} - Detailed View
+        {this.state.userData.first_name + " " + this.state.userData.last_name} - Detailed View
       </h2>
     </div>
     <div className="column is-narrow">
