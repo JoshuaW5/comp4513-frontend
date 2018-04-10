@@ -31,7 +31,7 @@ class Login extends Component {
             .then((response) => {
                 if(response.status === 200) {
 				console.log(response.data);
-                                   this.setState({authenticated: true})
+                this.setState({authenticated: true})
                 this.props.loginProp(this.state.authenticated);
 				this.props.userInfo(response.data);
 				this.props.chatController();

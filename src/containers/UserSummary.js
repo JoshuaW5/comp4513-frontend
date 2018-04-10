@@ -33,6 +33,31 @@ class UserSummary extends Component {
     }
     
     componentDidMount() {
+        axios.get('https://pacific-earth-77905.herokuapp.com/api/portfolio/percentage' + this.state.userID)
+            .then(response => {
+
+                var chartData = response.data;
+
+                chartData.forEach(function(e) {
+                    e.value = e.total;
+                    delete e.total;
+
+                });
+
+                chartData.forEach(function(e) {
+                    e.key = e._id;
+                    delete e._id;
+
+                });
+
+                console.log(chartData);
+
+                    this.setState({ stockPercent: chartData });
+                })
+                .catch(function (error) {
+                    alert('Error with api call ... error=' + error);
+                });
+        
         axios.get('https://pacific-earth-77905.herokuapp.com/api/portfolio/' + this.state.user.id)
             .then(response => {
                 this.setState({portfolioDetails: response.data})

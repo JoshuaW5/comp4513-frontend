@@ -18,7 +18,7 @@ const HeaderMenu = function (props) {
             to={ {pathname: "/chat"}}>Chat</NavLink>
         <NavLink className="navbar-item is-tab "
       
-            to={ {pathname: "/users"}}>Portfolio</NavLink>
+            to={ {pathname: "/user/:id"}}>Portfolio</NavLink>
         <NavLink className="navbar-item is-tab "
             to={ {pathname: "/stocks"}}>Companies</NavLink>
         <NavLink className="navbar-item is-tab "

@@ -24,7 +24,7 @@ class SingleUser extends Component {
 
     componentDidMount() {
         // Here we are using the Axios package to retrieve "dummy" API data
-        axios.get('https://jsonplaceholder.typicode.com/users/' + this.state.userID)
+        axios.get('https://pacific-earth-77905.herokuapp.com/api/getUserIDName/' + this.state.userID)
             .then(response => {
                 this.setState({ userData: response.data });
             })
@@ -72,7 +72,7 @@ class SingleUser extends Component {
         Assignment 2
       </h1>
       <h2 className="subtitle">
-        {this.state.userData.name} - Detailed View
+        {this.state.userData.fist_name} + " " +  {this.state.userData.fist_name} - Detailed View
       </h2>
     </div>
     <div className="column is-narrow">
@@ -80,8 +80,6 @@ class SingleUser extends Component {
   <ul>
     <li><Link
  to={"/home"}><u>Home</u></Link></li>
-     <li><Link
- to={"/users"}><u>Users</u></Link></li>
     <li className="is-active"><Link
  to={"/user"}>User</Link></li>
   </ul>

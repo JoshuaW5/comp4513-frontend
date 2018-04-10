@@ -7,17 +7,31 @@ class HeaderBar extends Component {
  constructor(props) {
   super(props);
   this.state = {
-   openBurger: false
+   openBurger: false,
+    userID: this.props,
   };
   // instead of using arrow syntax, this is a common way
   // to bind "this" correctly for React event handlers
   this.openBurger = this.openBurger.bind(this);
  }
 
+  componentDidMount() {
+        // Here we are using the Axios package to retrieve "dummy" API data
+        axios.get('https://pacific-earth-77905.herokuapp.com/api/getUserIDName/' + this.state.userID)
+            .then(response => {
+                this.setState({ userData: response.data });
+            })
+            .catch(function (error) {
+                alert('Error with api call ... error=' + error);
+            });
+    }    
+    
  openBurger() {
   this.state.openBurger ? this.setState({ openBurger: false }) : this.setState({ openBurger: true });
  }
 
+    
+    
  render() {
   return (
 
@@ -30,7 +44,7 @@ class HeaderBar extends Component {
  </span></Link>
  <Link
  to={"/home"} className="navbar-item">
- <h1 className="title">User's Name</h1></Link>
+ <h1 className="title">{this.state.userData.fist_name} + " " +  {this.state.userData.fist_name} </h1></Link>
   
 <Link  to={"/chat"} className="navbar-item">Chat</Link>
   <Link  to={"/login"} className="navbar-item">Logout</Link>

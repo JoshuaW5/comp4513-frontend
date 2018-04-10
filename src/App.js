@@ -107,7 +107,6 @@ class App extends Component {
  <Route path="/home" exact component={Home} />
  <Route path="/login" exact render={() => <Login loginProp={this.authCheck} chatController={this.chatController} userInfo={this.userInfo} />} />
  <Route path="/visual" exact component={StockVisual} />
- <Route path="/users" exact component={UserBrowser} />
  <Route path="/user/:id" exact component={SingleUser} />
  <Route path="/stock/:id" exact component={SingleStock} />
  <Route path="/stocks" exact component={StockBrowser} />

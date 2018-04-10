@@ -16,14 +16,6 @@ class UserCompleteDetails extends Component {
         this.openCompany = this.openCompany.bind(this);
     }
 
-    openAddress() {
-        this.state.openAddress ? this.setState({ openAddress: false }) : this.setState({ openAddress: true });
-    }
-
-    openCompany() {
-        this.state.openCompany ? this.setState({ openCompany: false }) : this.setState({ openCompany: true });
-    }
-
     /* Called when the user changes the content in a UserDetailItem control.
      */
     handleItemChange(value, identifier) {
@@ -54,10 +46,16 @@ identifier="id"
 currentValue={this.state.user.id}
 handleTextChange={this.handleItemChange} />
  
- <UserDetailItem place="Full name" icon="fa-user"
- type="text" label="Full name"
- identifier="name"
-currentValue={this.state.user.name}
+ <UserDetailItem place="First Name" icon="fa-user"
+ type="text" label="First Name"
+ identifier="last_name"
+currentValue={this.state.user.first_name}
+handleTextChange={this.handleItemChange} />
+            
+<UserDetailItem place="Last Name" icon="fa-user"
+ type="text" label="Last Name"
+ identifier="first_name"
+currentValue={this.state.user.last_name}
 handleTextChange={this.handleItemChange} />
 
  <UserDetailItem place="e.g. alexsmith@gmail.com"
