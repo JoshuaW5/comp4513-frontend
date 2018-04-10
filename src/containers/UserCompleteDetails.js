@@ -10,8 +10,6 @@ class UserCompleteDetails extends Component {
         // instead of using arrow syntax, this is a common way
         // to bind "this" correctly for React event handlers
         this.handleItemChange = this.handleItemChange.bind(this);
-        this.openAddress = this.openAddress.bind(this);
-        this.openCompany = this.openCompany.bind(this);
     }
 
     /* Called when the user changes the content in a UserDetailItem control.
