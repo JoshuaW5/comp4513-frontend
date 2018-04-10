@@ -81,12 +81,6 @@ class App extends Component {
             })
         });
     }
-
-	requireAuth(nextState, replace) {
-		if (!this.state.authenticated) {
-		replace('/login');
-  }
-}
 	
     authCheck(nextState) {
         this.setState({authenticated: nextState});
@@ -112,11 +106,10 @@ class App extends Component {
            
  <main >
  
-   <Route
-    path="/home" exact 
+  <Route path="/home" exact
     render={props =>
       this.state.authenticated ? (
-        <Home/>
+        <Home />
       ) : (
         <Redirect
           to={{
@@ -126,16 +119,16 @@ class App extends Component {
       )
     }
   />
- 
- <Route path="/" exact component={Login} onEnter={this.requireAuth()} />
- //<Route path="/home" exact component={Home} onEnter={this.requireAuth()} />
+  
+ <Route path="/" exact component={Login}  />
+ //<Route path="/home" exact component={Home} />
  <Route path="/login" exact render={() => <Login loginProp={this.authCheck} chatController={this.chatController} userInfo={this.userInfo} />} />
- <Route path="/visual" exact component={StockVisual} onEnter={this.requireAuth()} />
- <Route path="/users" exact component={UserBrowser} onEnter={this.requireAuth()} />
- <Route path="/user/:id" exact component={SingleUser} onEnter={this.requireAuth()} />
- <Route path="/stock/:id" exact component={SingleStock} onEnter={this.requireAuth()} />
- <Route path="/stocks" exact component={StockBrowser} onEnter={this.requireAuth()} />
- <Route path="/about" exact component={AboutUs} onEnter={this.requireAuth()} />
+ <Route path="/visual" exact component={StockVisual} />
+ <Route path="/users" exact component={UserBrowser} />
+ <Route path="/user/:id" exact component={SingleUser} />
+ <Route path="/stock/:id" exact component={SingleStock} />
+ <Route path="/stocks" exact component={StockBrowser} />
+ <Route path="/about" exact component={AboutUs} />
   
  <Route path="/chat" exact render={(props) => (
   <ChatViewer {...props} messages={this.state.messages} name={this.state.name} socket={this.state.socket}/>
