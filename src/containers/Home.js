@@ -38,7 +38,7 @@ class Home extends Component {
             Browse your portfolio
           </div>
           <Link className="button  is-fullwidth"
- to={"/users"}>
+ to={"/users" + this.props.userid}>
  View Portfolio
  </Link>
         </div>

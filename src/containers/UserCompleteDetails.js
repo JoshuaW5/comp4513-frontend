@@ -5,9 +5,7 @@ class UserCompleteDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: props.user,
-            openAddress: true,
-            openCompany: true
+            user: props.user
         };
         // instead of using arrow syntax, this is a common way
         // to bind "this" correctly for React event handlers

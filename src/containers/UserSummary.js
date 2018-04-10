@@ -13,10 +13,7 @@ class UserSummary extends Component {
             portfolioDetails: [],
             totalStocks: 0,
             totalValue: 0,
-            stockPercent: [
-                { value: 10, key: 1},
-                { value: 15, key: 2},
-                { value: 20, key: 3}]
+            stockPercent: []
         };
         
         this.calculateStocks = this.calculateStocks.bind(this);
@@ -33,7 +30,7 @@ class UserSummary extends Component {
     }
     
     componentDidMount() {
-        axios.get('https://pacific-earth-77905.herokuapp.com/api/portfolio/percentage' + this.state.userID)
+        axios.get('https://pacific-earth-77905.herokuapp.com/api/portfolio/percentage' + this.props.userid)
             .then(response => {
 
                 var chartData = response.data;

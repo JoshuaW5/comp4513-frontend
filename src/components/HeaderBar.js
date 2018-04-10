@@ -44,7 +44,7 @@ class HeaderBar extends Component {
  </span></Link>
  <Link
  to={"/home"} className="navbar-item">
- <h1 className="title">{this.state.userData.fist_name} + " " +  {this.state.userData.fist_name} </h1></Link>
+ <h1 className="title">{this.state.userData.first_name} + " " +  {this.state.userData.last_name} </h1></Link>
   
 <Link  to={"/chat"} className="navbar-item">Chat</Link>
   <Link  to={"/login"} className="navbar-item">Logout</Link>

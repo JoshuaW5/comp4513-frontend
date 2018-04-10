@@ -11,7 +11,6 @@ class SingleUser extends Component {
         super(props);
 
         this.state = {
-            userID: this.props.match.params.id,
             userData: [],
             portfolioData: [],
             details: true,
@@ -24,7 +23,7 @@ class SingleUser extends Component {
 
     componentDidMount() {
         // Here we are using the Axios package to retrieve "dummy" API data
-        axios.get('https://pacific-earth-77905.herokuapp.com/api/getUserIDName/' + this.state.userID)
+        axios.get('https://pacific-earth-77905.herokuapp.com/api/getUserIDName/' + this.props.userid)
             .then(response => {
                 this.setState({ userData: response.data });
             })
@@ -72,7 +71,7 @@ class SingleUser extends Component {
         Assignment 2
       </h1>
       <h2 className="subtitle">
-        {this.state.userData.fist_name} + " " +  {this.state.userData.fist_name} - Detailed View
+        {this.state.userData.first_name} + " " +  {this.state.userData.lastt_name} - Detailed View
       </h2>
     </div>
     <div className="column is-narrow">
