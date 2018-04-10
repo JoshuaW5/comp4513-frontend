@@ -23,7 +23,7 @@ class SingleUser extends Component {
 
     componentDidMount() {
         // Here we are using the Axios package to retrieve "dummy" API data
-        axios.get('https://pacific-earth-77905.herokuapp.com/api/getUserIDName/' + this.props.params.userid)
+        axios.get('https://pacific-earth-77905.herokuapp.com/api/getUserIDName/' + this.props.match.params.id)
             .then(response => {
                 this.setState({ userData: response.data });
             })
