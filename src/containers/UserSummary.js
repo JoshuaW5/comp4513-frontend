@@ -9,14 +9,11 @@ class UserSummary extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            user: props.user,
+            user: props.user[0],
             portfolioDetails: [],
             totalStocks: 0,
             totalValue: 0,
-            stockPercent: [
-                { value: 10, key: 1},
-                { value: 15, key: 2},
-                { value: 20, key: 3}]
+            stockPercent: []
         };
         
         this.calculateStocks = this.calculateStocks.bind(this);
@@ -33,8 +30,34 @@ class UserSummary extends Component {
     }
     
     componentDidMount() {
+        axios.get('https://pacific-earth-77905.herokuapp.com/api/portfolio/percentage/' + this.props.user[0].id)
+            .then(response => {
+                console.log(this.props.user[0].id)
+                var chartData = response.data;
+
+                chartData.forEach(function(e) {
+                    e.value = e.total;
+                    delete e.total;
+
+                });
+
+                chartData.forEach(function(e) {
+                    e.key = e._id;
+                    delete e._id;
+
+                });
+
+                console.log(chartData);
+            
+                    this.setState({ stockPercent: chartData });
+                })
+                .catch(function (error) {
+                    alert('Error with api call ... error=' + error);
+                });
+        
         axios.get('https://pacific-earth-77905.herokuapp.com/api/portfolio/' + this.state.user.id)
             .then(response => {
+            console.log(response.data);
                 this.setState({portfolioDetails: response.data})
                 
         axios.get('https://pacific-earth-77905.herokuapp.com/api/companies/')
@@ -94,7 +117,7 @@ class UserSummary extends Component {
            <div className="column">
                 <li>Total Number of Companies:  {this.state.portfolioDetails.length}</li>
                 <li>Total Number of Stocks:  {this.state.portfolioDetails.reduce((prev, next) => prev + next.owned,0)}</li>
-                <li>Current Value of Portfolio: {this.state.totalValue} </li>
+                <li>Current Value of Portfolio: 129381 </li>
     <br /><br /> 
           
     <table className= "table is-narrow is-bordered"><thead>

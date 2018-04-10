@@ -2,22 +2,27 @@ import React, { Component } from 'react';
 import HeaderMenu from './HeaderMenu.js';
 import { Link } from 'react-router-dom';
 
+
 class HeaderBar extends Component {
 
  constructor(props) {
   super(props);
   this.state = {
-   openBurger: false
+   openBurger: false,
+    userID: this.props,
   };
   // instead of using arrow syntax, this is a common way
   // to bind "this" correctly for React event handlers
   this.openBurger = this.openBurger.bind(this);
  }
-
+  
+    
  openBurger() {
   this.state.openBurger ? this.setState({ openBurger: false }) : this.setState({ openBurger: true });
  }
 
+    
+    
  render() {
   return (
 
@@ -30,7 +35,7 @@ class HeaderBar extends Component {
  </span></Link>
  <Link
  to={"/home"} className="navbar-item">
- <h1 className="title">User's Name</h1></Link>
+ <h1 className="title"> username </h1></Link>
   
 <Link  to={"/chat"} className="navbar-item">Chat</Link>
   <Link  to={"/login"} className="navbar-item">Logout</Link>

@@ -51,9 +51,12 @@ class StockSummary extends Component {
             .catch(function (error) {
                 alert('Error with api call ... error=' + error);
             });
+                
+
     }
 
     render() {
+        
         if(!this.props.stock || this.props.stock.length === 0) {
             return null;
         }
